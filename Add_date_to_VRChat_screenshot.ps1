@@ -3,7 +3,7 @@
 # Path to the folder containing images
 $folderPath = "E:\Amazon Drive\Pictures\VRChat"
 
-$files = Get-ChildItem -Path $folderPath -File -Recurse -Include *.jpg, *.jpeg, *.png
+$files = Get-ChildItem -Path $folderPath -File -Recurse -Include *.jpg, *.jpeg, *.png | Where-Object {$_.Name -notmatch '_dated'}
 $fileCount = $files.Count
 Write-Output "$fileCount files found."
 for ($i = 0; $i -lt $files.Count; $i++) {
@@ -19,10 +19,17 @@ for ($i = 0; $i -lt $files.Count; $i++) {
     if ($fileName -match '\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}(\.\d{3})?') {
         $Date = & 'exiftool.exe' -overwrite_original -DateTimeOriginal $file.FullName | Select-String "Date"
         Write-Output $Date
+
         # Return if date already exists
-        
         if (![System.String]::IsNullOrWhiteSpace($Date)){
-            Write-Host "Date already exists. Skipping file."
+            Write-Host "Date already exists. Rename the file."
+            
+            $name = [System.IO.Path]::GetFileNameWithoutExtension($file)
+            $ext = [System.IO.Path]::GetExtension($fileName)
+            $newName = "${name}_dated$ext"
+            Rename-Item -Path $file -NewName $newName
+            
+            Write-Host "Renamed file to: $newName"
             Continue
         }
 
@@ -35,8 +42,21 @@ for ($i = 0; $i -lt $files.Count; $i++) {
         Write-Host "Setting EXIF AllDates to: $exifDateTimeWithTZ"
 
         # Call exiftool to update date fields
-        # Requires exiftool installed and in PATH
         & 'exiftool.exe' -overwrite_original -alldates="$exifDateTimeWithTZ" $file.FullName
+
+        # Check the date was set and rename the file
+        $Date = & 'exiftool.exe' -overwrite_original -DateTimeOriginal $file.FullName | Select-String "Date"
+        if (![System.String]::IsNullOrWhiteSpace($Date)){
+            Write-Host "Date set successfully. Rename the file."
+            
+            $name = [System.IO.Path]::GetFileNameWithoutExtension($file)
+            $ext = [System.IO.Path]::GetExtension($fileName)
+            $newName = "${name}_dated$ext"
+            Rename-Item -Path $file -NewName $newName
+            
+            Write-Host "Renamed file to: $newName"
+            Continue
+        }
     }
     else {
         Write-Host "No valid date/time found in filename."
