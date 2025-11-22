@@ -29,8 +29,8 @@ VRChat は内部で `yt-dlp` を利用し匿名アクセスで動画を取得し
 
 ## 使い方
 
-1. [`VRChatFixYoutube.bat`](https://raw.githubusercontent.com/ballban/Windows_Scripts/refs/heads/main/VRChatFixYoutube/VRChatFixYoutube.bat) をダウンロードします。（右クリック保存）
-2. ファイルを右クリックし「管理者として実行」を選びます。
+1. [`VRChatFixYoutube.zip`](https://raw.githubusercontent.com/ballban/Windows_Scripts/refs/heads/main/VRChatFixYoutube/VRChatFixYoutube.zip) をダウンロードします。（右クリック保存）
+2. ZIP ファイルを解凍して、`VRChatFixYoutube.bat`ファイルを右クリックし「管理者として実行」を選びます。
 3. 指示に従い処理が完了するまで待ちます。
 4. VRChat を再起動し YouTube 動画が再生できるか確認します。
 
