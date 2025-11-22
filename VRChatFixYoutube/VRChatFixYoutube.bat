@@ -1,4 +1,29 @@
 @echo off
+:: ===========================================
+:: 詳細説明 / Detailed Description
+echo ------------------------------------------------------------------------
+echo このスクリプトは、VRChatでYoutubeの視聴ができないプレイヤーのために作ったツールです。
+echo This script was created for VRChat players who cannot watch YouTube.
+echo ------------------------------------------------------------------------
+echo 機能の詳細 / Detailed Functions:
+echo 1) C:\Windows\System32\drivers\etc\hosts ファイルを読み込みます。
+echo    Reads your "hosts" file located at C:\Windows\System32\drivers\etc\
+echo 2) www.youtube.com の設定が既にあるか確認します。
+echo    Checks if there is an entry for "www.youtube.com".
+echo 3) 追加モード(Y選択)の場合:
+echo    - 最新のIPv4アドレスをインターネットから取得します。
+echo    - 古いYouTubeエントリーがある場合は置き換え、ない場合は新規追加します。
+echo    - hostsファイルをバックアップ後に更新します。
+echo    In Add mode (Y), fetches latest IPv4 address and adds/replaces the entry.
+echo    Makes a backup of your hosts file before saving changes.
+echo 4) 削除モード(D選択)の場合:
+echo    - hostsファイルから www.youtube.com の設定を削除します。
+echo    In Delete mode (D), removes any www.youtube.com entry from hosts file.
+echo ------------------------------------------------------------------------
+echo *** このスクリプトは管理者権限で実行する必要があります！ ***
+echo *** You must run this script as Administrator! ***
+echo ------------------------------------------------------------------------
+echo.
 set "HOSTS_FILE=%SystemRoot%\System32\drivers\etc\hosts"
 set "TARGET=www.youtube.com"
 
@@ -87,4 +112,5 @@ findstr /i "%TARGET%" "%HOSTS_FILE%"
 echo.
 echo 操作完了！
 echo Operation completed!
+pause
 exit /b
