@@ -1,7 +1,7 @@
 # Registry path settings
 $regBasePath = "Registry::HKEY_CLASSES_ROOT\SystemFileAssociations"
 $formats = @("image", ".bmp", ".heic", ".webp")
-$convertScript = "C:\Users\ballb\Documents\SourceCode\Windows_Scripts\Convert_Images\Convert_images.ps1"
+$convertScript = "Convert_images.ps1"
 
 # Function to add context menu items
 function Add-ImageConversionContextMenu {
