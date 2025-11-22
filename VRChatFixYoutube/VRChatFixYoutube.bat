@@ -1,40 +1,41 @@
 @echo off
+chcp 65001 >nul
 :: ===========================================
-:: Ú×à–¾ / Detailed Description
+:: è©³ç´°èª¬æ˜ / Detailed Description
 echo ------------------------------------------------------------------------
-echo ‚±‚ÌƒXƒNƒŠƒvƒg‚ÍAVRChat‚ÅYoutube‚Ì‹’®‚ª‚Å‚«‚È‚¢ƒvƒŒƒCƒ„[‚Ì‚½‚ß‚Éì‚Á‚½ƒc[ƒ‹‚Å‚·B
+echo ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ã€VRChatã§Youtubeã®è¦–è´ãŒã§ããªã„ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãŸã‚ã«ä½œã£ãŸãƒ„ãƒ¼ãƒ«ã§ã™ã€‚
 echo This script was created for VRChat players who cannot watch YouTube.
 echo ------------------------------------------------------------------------
-echo ‹@”\‚ÌÚ× / Detailed Functions:
-echo 1) C:\Windows\System32\drivers\etc\hosts ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İ‚Ü‚·B
+echo æ©Ÿèƒ½ã®è©³ç´° / Detailed Functions:
+echo 1) C:\Windows\System32\drivers\etc\hosts ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚
 echo    Reads your "hosts" file located at C:\Windows\System32\drivers\etc\
-echo 2) www.youtube.com ‚Ìİ’è‚ªŠù‚É‚ ‚é‚©Šm”F‚µ‚Ü‚·B
+echo 2) www.youtube.com ã®è¨­å®šãŒæ—¢ã«ã‚ã‚‹ã‹ç¢ºèªã—ã¾ã™ã€‚
 echo    Checks if there is an entry for "www.youtube.com".
-echo 3) ’Ç‰Áƒ‚[ƒh(Y‘I‘ğ)‚Ìê‡:
-echo    - ÅV‚ÌIPv4ƒAƒhƒŒƒX‚ğƒCƒ“ƒ^[ƒlƒbƒg‚©‚çæ“¾‚µ‚Ü‚·B
-echo    - ŒÃ‚¢YouTubeƒGƒ“ƒgƒŠ[‚ª‚ ‚éê‡‚Í’u‚«Š·‚¦A‚È‚¢ê‡‚ÍV‹K’Ç‰Á‚µ‚Ü‚·B
-echo    - hostsƒtƒ@ƒCƒ‹‚ğƒoƒbƒNƒAƒbƒvŒã‚ÉXV‚µ‚Ü‚·B
+echo 3) è¿½åŠ ãƒ¢ãƒ¼ãƒ‰(Yé¸æŠ)ã®å ´åˆ:
+echo    - æœ€æ–°ã®IPv4ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒƒãƒˆã‹ã‚‰å–å¾—ã—ã¾ã™ã€‚
+echo    - å¤ã„YouTubeã‚¨ãƒ³ãƒˆãƒªãƒ¼ãŒã‚ã‚‹å ´åˆã¯ç½®ãæ›ãˆã€ãªã„å ´åˆã¯æ–°è¦è¿½åŠ ã—ã¾ã™ã€‚
+echo    - hostsãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—å¾Œã«æ›´æ–°ã—ã¾ã™ã€‚
 echo    In Add mode (Y), fetches latest IPv4 address and adds/replaces the entry.
 echo    Makes a backup of your hosts file before saving changes.
-echo 4) íœƒ‚[ƒh(D‘I‘ğ)‚Ìê‡:
-echo    - hostsƒtƒ@ƒCƒ‹‚©‚ç www.youtube.com ‚Ìİ’è‚ğíœ‚µ‚Ü‚·B
+echo 4) å‰Šé™¤ãƒ¢ãƒ¼ãƒ‰(Dé¸æŠ)ã®å ´åˆ:
+echo    - hostsãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ www.youtube.com ã®è¨­å®šã‚’å‰Šé™¤ã—ã¾ã™ã€‚
 echo    In Delete mode (D), removes any www.youtube.com entry from hosts file.
 echo ------------------------------------------------------------------------
-echo *** ‚±‚ÌƒXƒNƒŠƒvƒg‚ÍŠÇ—ÒŒ ŒÀ‚ÅÀs‚·‚é•K—v‚ª‚ ‚è‚Ü‚·I ***
+echo *** ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ç®¡ç†è€…æ¨©é™ã§å®Ÿè¡Œã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ï¼ ***
 echo *** You must run this script as Administrator! ***
 echo ------------------------------------------------------------------------
 echo.
 set "HOSTS_FILE=%SystemRoot%\System32\drivers\etc\hosts"
 set "TARGET=www.youtube.com"
 
-echo “ü—Í: Y = ’Ç‰Á/XV D = íœ
+echo å…¥åŠ›: Y = è¿½åŠ /æ›´æ–° D = å‰Šé™¤
 echo Enter: Y = Add/Update D = Delete
-set /p mode=“ü—Í / Input: 
+set /p mode=å…¥åŠ› / Input: 
 echo.
 
 if /i "%mode%"=="Y" goto ADD
 if /i "%mode%"=="D" goto DELETE
-echo ‘€ì‚ÍƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½B
+echo æ“ä½œã¯ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã—ãŸã€‚
 echo Operation cancelled.
 pause
 exit /b
@@ -42,7 +43,7 @@ exit /b
 :ADMIN_CHECK
 net session >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ƒGƒ‰[: ŠÇ—ÒŒ ŒÀ‚Å‚±‚ÌƒXƒNƒŠƒvƒg‚ğÀs‚µ‚Ä‚­‚¾‚³‚¢I
+    echo ã‚¨ãƒ©ãƒ¼: ç®¡ç†è€…æ¨©é™ã§ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å®Ÿè¡Œã—ã¦ãã ã•ã„ï¼
     echo Error: Please run this script as Administrator!
     pause
     exit /b 1
@@ -58,10 +59,10 @@ if %errorlevel%==0 (
     copy "%HOSTS_FILE%" "%HOSTS_FILE%.bak" >nul
     findstr /i /v "%TARGET%" "%HOSTS_FILE%" > "%HOSTS_FILE%.tmp"
     move /y "%HOSTS_FILE%.tmp" "%HOSTS_FILE%" >nul
-    echo íœŠ®—¹I
+    echo å‰Šé™¤å®Œäº†ï¼
     echo Deletion complete!
 ) else (
-    echo %TARGET% ‚ÌƒGƒ“ƒgƒŠ[‚Í‘¶İ‚µ‚Ü‚¹‚ñB
+    echo %TARGET% ã®ã‚¨ãƒ³ãƒˆãƒªãƒ¼ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚
     echo No entry for %TARGET% found in hosts file.
 )
 pause
@@ -73,29 +74,29 @@ if errorlevel 1 exit /b
 
 findstr /i "%TARGET%" "%HOSTS_FILE%" >nul
 if %errorlevel%==0 (
-    echo Šù‚É %TARGET% ‚ÌƒGƒ“ƒgƒŠ[‚ª‘¶İ‚µ‚Ü‚·:
+    echo æ—¢ã« %TARGET% ã®ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãŒå­˜åœ¨ã—ã¾ã™:
     echo Entry for %TARGET% already exists:
     findstr /i "%TARGET%" "%HOSTS_FILE%"
-    echo ã‘‚«‚µ‚Ü‚·‚©? (y/n^):
+    echo ä¸Šæ›¸ãã—ã¾ã™ã‹? (y/n^):
     set /p "overwrite=Overwrite? (y/n): "
     if /i "%overwrite%"=="Y" (
         echo.
-        echo ‘€ì‚ÍƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½B
+        echo æ“ä½œã¯ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã—ãŸã€‚
         echo Operation cancelled.
         exit /b
     ) else (
-        rem Œp‘±
+        rem ç¶™ç¶š
     )
 )
 echo.
 
-:: IPv4ƒAƒhƒŒƒX‚Ìæ“¾ / Get IPv4 address by ping
+:: IPv4ã‚¢ãƒ‰ãƒ¬ã‚¹ã®å–å¾— / Get IPv4 address by ping
 set "IP="
 for /f "tokens=2 delims=[]" %%A in ('ping -4 -n 1 %TARGET% ^| findstr "["') do (
     set "IP=%%A"
 )
 if "%IP%"=="" (
-    echo IPv4ƒAƒhƒŒƒX‚Ìæ“¾‚É¸”s‚µ‚Ü‚µ‚½B
+    echo IPv4ã‚¢ãƒ‰ãƒ¬ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚
     echo Failed to get IPv4 address.
     exit /b
 )
@@ -105,12 +106,12 @@ copy "%HOSTS_FILE%" "%HOSTS_FILE%.bak" >nul
 findstr /i /v "%TARGET%" "%HOSTS_FILE%" > "%HOSTS_FILE%.tmp"
 move /y "%HOSTS_FILE%.tmp" "%HOSTS_FILE%" >nul
 echo %IP% %TARGET% >> "%HOSTS_FILE%"
-echo hostsƒtƒ@ƒCƒ‹‚ğXV‚µ‚Ü‚µ‚½:
+echo hostsãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›´æ–°ã—ã¾ã—ãŸ:
 echo Hosts file updated:
 findstr /i "%TARGET%" "%HOSTS_FILE%"
 
 echo.
-echo ‘€ìŠ®—¹I
+echo æ“ä½œå®Œäº†ï¼
 echo Operation completed!
 pause
 exit /b
