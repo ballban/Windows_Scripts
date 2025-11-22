@@ -66,5 +66,7 @@ VRChat は内部で `yt-dlp` を利用し匿名アクセスで動画を取得し
 
 ---
 
-改善提案・不具合報告歓迎です。Issue などでお知らせください。  
-v 1.0 by ballban
+改善提案・不具合報告歓迎です。Issue もしくはメッセージなどでお知らせください。  
+E-mail: ballban@hotmail.com  
+Discord: ballban  
+v1.0 by ballban
